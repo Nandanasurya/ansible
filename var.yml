@@ -1,0 +1,55 @@
+- name: variables
+  hosts: webserver
+  vars:
+    # string variable
+    student_name: Nandana
+
+      #boolean
+    is_enabled: true
+
+      #list variables
+    student_list:
+      - mridul
+      - murshi
+      - anamika
+
+    student_marks:
+        mridul: 85
+        murshi: 90
+        anamika: 85
+
+    port:
+       port_to_open: 8080
+    
+
+  tasks:
+      - name: string variable
+        debug:
+          var: student_name
+
+      - name: boolean
+        debug:
+          msg: variable value is true
+        when: is_enabled
+
+      - name: list variables
+        debug:
+          var: student_list
+
+      - name: list - reference
+        debug:
+          var: student_list[0]
+
+      - name: print dictionary variable
+        debug:
+          var: student_marks
+
+      - name: port 
+        debug:
+          msg: application port is
+        when: port
+
+    
+
+  
+

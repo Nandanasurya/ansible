@@ -1,0 +1,23 @@
+---
+- name: Gather and display system facts
+  hosts: webserver
+  gather_facts: yes
+
+  tasks:
+    - name: Display the OS distribution
+      debug:
+        msg: "The OS distribution is {{ ansible_facts['distribution'] }}"
+
+    - name: Display OS family
+      debug:
+        msg: "The OS family is {{ ansible_facts['os_family'] }}"
+
+    - name: Display the CPU details
+      debug:
+        msg: "CPU model is {{ ansible_facts['processor'][0] }}"
+          
+    - name: Display the IP address
+      debug:
+        msg: "The IP address is {{ ansible_facts['default_ipv4']['address'] }}"
+
+

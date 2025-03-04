@@ -1,0 +1,9 @@
+---
+- name: Ping to host playbook
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: Ping host
+      ansible.builtin.ping:
+

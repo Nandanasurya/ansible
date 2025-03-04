@@ -1,0 +1,21 @@
+---
+- name: Install nginx server
+  hosts: webserver
+  become: yes
+  tasks:
+
+    - name: Install nginx
+      tags:
+        - install
+      apt:
+        name: nginx
+        state: present
+          #update_cache: yes
+         
+    - name: remove nginx
+      tags:
+        - remove
+      apt:
+        name: nginx
+        state: absent
+

@@ -1,0 +1,17 @@
+---
+- name: Create a user and add to sudo group in one play
+  hosts: all
+  become: yes
+  vars:
+    Nandana: "Nandana"
+
+  tasks:
+    - name: Create a new user and add to sudo group
+      user:
+        name: "{{ Nandana }}"
+        state: present
+        shell: /bin/bash
+        comment: "User {{ Nandana }}"
+        groups: sudo
+        append: yes
+

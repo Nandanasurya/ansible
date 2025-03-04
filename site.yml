@@ -1,0 +1,28 @@
+---
+- name: Install nginx server
+  hosts: webserver
+  become: yes
+  tasks:
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+     
+    - name: Enable and start nginx service
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: permit traffic in default zone for http service
+      ufw:
+        rule: allow
+        port: 80
+        proto: tcp 
+
+    - name: Restart firewalld to apply changes
+      command: ufw reload 
+
+ 

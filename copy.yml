@@ -1,0 +1,13 @@
+---
+- name: Copy file with read and write permissions
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copy the file from source to destination
+      copy:
+        src: /home/synnefo/ansible-projects/copy.yml
+        dest: /home/synnefo/nandu_ansible/copy.yml
+        owner: synnefo
+        group: Nandana
+        mode: '0664'
+
